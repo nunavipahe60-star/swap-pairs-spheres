@@ -1,0 +1,874 @@
+% !TeX program = pdflatex
+% Self-contained source. Compile twice with pdfLaTeX.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=25mm]{geometry}
+\usepackage{array,longtable,booktabs,calc}
+\usepackage[hidelinks,unicode]{hyperref}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\setcounter{secnumdepth}{0}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\raggedbottom
+\hypersetup{pdftitle={Swap pairs on spheres of revolution: what the equivariant spectrum sees},pdfauthor={@Erina}}
+\begin{document}
+{\LARGE\bfseries Swap pairs on spheres of revolution\par}
+{\Large What the equivariant spectrum sees\par}
+{\small @Erina\hfill November 10, 2026\par}
+\medskip
+
+Fix three nonzero nonnegative bumps with separated supports on the northern half of a round
+sphere. Each bump can be placed at its given latitude or at its reflection. The equivariant
+Laplace spectrum distinguishes these arrangements up to a simultaneous reflection. All
+coefficients in the local semiclassical expansion agree across this family. The distinction
+comes from exact inverse traces and from the different lengths assigned to a gap by meridian
+arc length and by the Mercator coordinate.
+
+The rotation-invariant sector alone also detects some triples for which the first three
+inverse traces coincide. For any prescribed finite number of traces, however, a family with
+enough bumps admits two distinct arrangements that agree on all the prescribed initial
+traces.
+
+\section{1. Setting and notation}\label{setting-and-notation}
+
+Normalize the area of the sphere to \(4\pi\) and the period of the effective rotation action
+to \(2\pi\). In the area coordinate \(-1<x<1\) and angle \(\theta\), a rotation-invariant
+metric and the unit round profile are given by
+
+\[g_v=v(x)\,dx^2+v(x)^{-1}\,d\theta^2,\qquad v_0(x)=(1-x^2)^{-1}.\]
+
+Here \(v>0\) and \(v-v_0\) extends smoothly to the closed interval. These endpoint
+conditions give smooth poles. Write \(f^\#(x)=f(-x)\). For non-round metrics in this
+normalization, two profiles define isometric metrics precisely when they coincide or are
+related by this reflection. Indeed, a nonconstant curvature function has a regular point.
+The orbit there has dimension at most one. An orientation-preserving isometry fixing the
+point fixes its nonzero curvature gradient, hence its derivative is the identity and the
+isometry is the identity. Hence the rotation circle is the identity component of the
+isometry group. Every isometry carries the latitude orbits to latitude orbits and preserves
+the area between them, which gives \(x\mapsto x\) or \(x\mapsto -x\).
+
+\textbf{Sectors.} On functions \(u(x)e^{im\theta}\) the nonnegative Laplacian acts on
+\(L^2((-1,1),dx)\) by
+
+\[L_m u=-\left(\frac{u'}{v}\right)'+m^2vu,\qquad P_v=L_0.\]
+
+The equivariant spectrum records every eigenvalue with its angular weight \(m\) and
+multiplicity. We call the labelled sectors with \(|m|>K\) the high-weight sectors. The
+\(K\)-equivariant spectrum in [1, Definition 2.1] additionally retains the full ordinary
+spectrum with multiplicities.
+
+\textbf{Three meridian coordinates.} In each case choose the origin at the equator.
+Distances across a gap in Sections 8--10 are computed using the indicated round coordinate.
+
+{% Unnumbered results table.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Coordinate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Differential
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+On the round sphere
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Area & \(dx\) & \(x\) \\
+Meridian arc length & \(\sqrt v\,dx\) & \(\arcsin x\) \\
+Mercator & \(v\,dx\) & \(\operatorname{arctanh}x\) \\
+\end{longtable}
+}
+
+\textbf{Single wells and swaps.} We consider profiles with a nondegenerate minimum at
+\(x=0\) and nonvanishing derivative on either open side. For a level \(s>\min v\), write the
+sublevel interval as \((\ell(s),r(s))\), its width as \(W=r-\ell\) and its midpoint as
+\(a=(r+\ell)/2\). The two slope combinations used in [1, Section 3] determine \(W\) and
+\(|a'|\). Choosing which inverse slope belongs to each side requires a consistent labelling
+over all levels. For the bump families below certain changes of labelling amount to
+reflecting one bump at fixed area coordinates.
+
+\textbf{Bump families.} Let \(\beta_1,\ldots,\beta_N\) be smooth, nonnegative, nonzero
+functions whose supports lie in ordered compact subintervals of \((0,1)\) separated by
+positive gaps. Extend them by zero and choose \(\varepsilon>0\). For signs
+\(\sigma_i=\pm1\), put bump \(i\) in the north for \(\sigma_i=1\) and in the south for
+\(\sigma_i=-1\). Thus
+
+\[e=v_0+\frac{\varepsilon}{2}\sum_i(\beta_i+\beta_i^\#),\qquad O_i=(\beta_i-\beta_i^\#)/2,\]
+
+\[v_\sigma=e+\varepsilon\sum_i\sigma_i O_i,\qquad v_{-\sigma}=v_\sigma^\#.\]
+
+For sufficiently small \(\varepsilon\), the affected height ranges are disjoint, the
+branches stay strictly monotone, and the curvature \(-(1/v_\sigma)''/2\) stays positive. At
+each height the two endpoints of the sublevel interval for any two arrangements agree up to
+reflection. Thus the arrangements share \(e\), \(W\) and \(|a'|\). We ask whether spectral
+data distinguish the sign vectors up to their common reversal.
+
+\section{2. A smooth swap and the inverse branch
+argument}\label{a-smooth-swap-and-the-inverse-branch-argument}
+
+Dryden, Macedo and Sena-Dias [1, Theorem 1.4] state that the asymptotic equivariant
+spectrum determines the metric in their single-well class. We examine the last step of the
+proof in the authors' arXiv v2 [1, Section 3, p.~16]. Fix two bumps \(A,B\) as in
+Section 1, with \(A\) closer to the equator, and set
+
+\[v_1=v_0+\varepsilon(A+B),\qquad v_2=v_0+\varepsilon(A+B^\#).\]
+
+\textbf{Proposition 2.1.} For all sufficiently small \(\varepsilon>0\), these profiles
+define non-isometric, positively curved single-well metrics. They agree with the round
+metric near the equator and both poles. Every coefficient in the expansion of the smoothed
+equivariant trace in [1, Theorem 2.2] takes the same value on both profiles. In
+particular, their invariants (6) and (7) of [1, Theorem 2.5] agree for every test
+function and admissible nonzero weight parameter in that theorem.
+
+\textbf{Proof.} On the union of the northern support intervals \(v_0'\) has a positive lower
+bound. Small perturbations preserve strict monotonicity there and on the reflected
+intervals. Positivity of curvature follows from \(C^2\) continuity on these compact
+intervals. The origin retains its round, nondegenerate minimum. The two arrangements differ
+and are not global reflections, so Section 1 gives non-isometry.
+
+Take an interval \(I\) containing the support of \(B\) and disjoint from the support of
+\(A\). Outside \(I\cup(-I)\) the profiles coincide. On \(I\cup(-I)\) one is the reflection
+of the other. The densities in (6) and (7) depend locally on \(v\), \((v')^2\) and \(v''\)
+and are invariant under simultaneous reflection of the position and momentum variables. More
+generally, the recursion for the coefficients \(b_k\) in [1, Theorem 2.2] is local in
+\(v\), its inverse and their derivatives. Each first-order differentiation changes sign
+under \((x,\xi)\mapsto(-x,-\xi)\) along with its momentum factor, and the two derivative
+factors in the second-order term change sign together. Starting with \(b_0=1\), the
+recursion gives \(b_k[v^\#](x,\xi,t)=b_k[v](-x,-\xi,t)\). Changing variables on the
+reflected intervals leaves each integrated coefficient unchanged.
+
+\textbf{The labelling step.} Use the increasing inverse side lengths \(f_1=r\) and
+\(f_2=-\ell\), so \(p=f_1'\) and \(q=f_2'\) are both positive. The quantities \(p+q\) and
+\(1/p+1/q\) determine \(\{p(s),q(s)\}\) at each height. To integrate them as globally
+labelled functions one must still decide which branch to follow across a height where their
+jets agree. Infinite-order agreement permits a smooth change of labelling. A candidate must
+also satisfy the endpoint conditions after integration. The profiles above satisfy these
+conditions and realize a change of labelling which is not a global reflection.
+
+The generic symmetry-defect hypothesis in Colin de Verdière's single-well theorem [2,
+Theorem 5.1(3)] gives a model for a sufficient assumption excluding such local changes.
+Real analyticity likewise gives unique continuation of the inverse branches at regular
+levels. The smooth counterexample concerns recovery from the coefficients of the trace
+expansion. The exact data in [1, Definition 2.1] separate these two metrics, as Sections
+3, 6 and 9 demonstrate. The earlier mirror-symmetric case is treated by Brüning and Heintze
+[4].
+
+\section{3. The rotation invariant sector and its second inverse
+trace}\label{the-rotation-invariant-sector-and-its-second-inverse-trace}
+
+We omit the constant mode when taking the inverse of \(P_v\). For a mean-zero function
+\(f\), define \((Sf)(x)=\int_{-1}^{x}f(t)\,dt\). Solving \(P_vu=f\) gives \(u'=-vSf\), with
+the additive constant fixed by the mean-zero condition. Thus \(P_v^{-1}=S^*M_vS\) as a
+quadratic form on the mean-zero subspace, where \(M_v\) denotes multiplication by \(v\).
+Since \(Sf\) vanishes at both endpoints, \(SS^*\) has kernel equal to the Dirichlet Green
+function for the ordinary interval Laplacian,
+
+\[C(x,y)=\frac{(1+\min(x,y))(1-\max(x,y))}{2}.\]
+
+With \(x_{k+1}=x_1\), cyclically composing the kernels gives
+
+\[T_k(v)=\sum_{j\ge1}\lambda_{0,j}^{-k}=\int_{(-1,1)^k}\prod_{i=1}^k v(x_i)C(x_i,x_{i+1})\,dx_1\cdots dx_k.\]
+
+Indeed \(M_{\sqrt v}S\) is Hilbert-Schmidt since \(\int v(x)C(x,x)\,dx\) is finite. Each
+cyclic integral converges by \(C(x,y)^2\le C(x,x)C(y,y)\). In particular,
+
+\[T_1(v)=\frac12\int_{-1}^{1}(1-x^2)v(x)\,dx,\qquad J(v)=T_2(v)=\iint v(x)v(y)C(x,y)^2\,dx\,dy.\]
+
+The first formula also appears in [3, Proposition 3.1]. On the round sphere
+\(J(v_0)=\pi^2/3-3\), as follows by summing \(1/(\ell^2(\ell+1)^2)\) over \(\ell\ge1\). For
+a positive eigenvalue \(\lambda\), the flux \(w=u'/v\) satisfies the fixed-end string
+equation \(-w''=\lambda v w\) with \(w(\pm1)=0\).
+
+\textbf{Proposition 3.1.} Let \(v=e+o\) be its decomposition into even and odd parts. On the
+northern half put
+
+\[K(x,y)=C(x,y)^2-C(x,-y)^2=\min(x,y)(1-\max(x,y))^2.\]
+
+Then \(J(v)=J(e)+2\langle o,Ko\rangle\), with the pairing over \((0,1)\). The excess is
+nonnegative and vanishes precisely for an even profile.
+
+\textbf{Proof.} The mixed even-odd integral vanishes by reflection. Folding the odd-odd
+integral onto \((0,1)^2\) gives the asserted kernel. If \(G_D\) denotes the Dirichlet Green
+operator on \((0,1)\), then \(K(x,y)=G_D(x,y)(1-\max(x,y))\). Write
+\(o_t=o\,\mathbf 1_{(0,t)}\). Fubini gives
+\(\langle o,Ko\rangle=\int_0^1\langle o_t,G_D o_t\rangle\,dt\). The inverse Dirichlet
+Laplacian is positive and injective. For \(o\ne0\), the integrand is strictly positive for
+all \(t\) sufficiently close to one.
+
+\textbf{Corollary 3.2.} The two-bump profiles of Section 2 have different \(m=0\) spectra.
+On the northern half their odd parts are \(\varepsilon(A+B)/2\) and \(\varepsilon(A-B)/2\).
+Thus
+
+\[J(v_1)-J(v_2)=2\varepsilon^2\langle A,KB\rangle=2\varepsilon^2\int_0^1\int_0^1 A(x)K(x,y)B(y)\,dy\,dx>0.\]
+
+The inequality is strict because \(K\) is pointwise positive and each bump is nonzero and
+nonnegative. This is an exact identity at every admissible amplitude. Their first inverse
+traces agree because the weight in \(T_1\) is even. More generally, on a fixed bump family
+the algebraic dependence on the signs is
+
+\[J(v_\sigma)=J(e)+\frac{\varepsilon^2}{2}\sum_{i,j}\sigma_i\sigma_j\langle\beta_i,K\beta_j\rangle.\]
+
+\section{4. The trace in height coordinates}\label{the-trace-in-height-coordinates}
+
+Write \(c=\min v\). For \(s>c\) let \(I_s=(\ell(s),r(s))\), \(W=r-\ell\), \(a=(r+\ell)/2\),
+and \(u=1-W/2\). The profiles considered here have nonzero derivative on either side of the
+minimum, so the inverse branches are smooth for \(s>c\). In formulas below, functions
+indexed by ``in'' are evaluated at the inner level \(s\) and functions indexed by ``out'' at
+the outer level \(t>s\).
+
+\textbf{Proposition 4.1.} Define the inner moments by
+
+\[E_{\mathrm{in}}=\int_{\ell}^{r}\frac{1+x^2}{2}\,dx=\frac{W}{2}(1+a^2)+\frac{W^3}{24},\qquad O_{\mathrm{in}}=aW.\]
+
+The corresponding outer moments are
+
+\[E_{\mathrm{out}}=\frac{(1-r)^3+(1+\ell)^3}{6}=\frac{u^3}{3}+ua^2,\]
+
+\[O_{\mathrm{out}}=\frac{(1+\ell)^3-(1-r)^3}{6}=au^2+\frac{a^3}{3}.\]
+
+For \(c<s<t\), the density of the sum over the four boundary pairs is
+
+\[\sum_{x\in\partial I_s,\ y\in\partial I_t} C(x,y)^2\,|x'(s)y'(t)|=-E_{\mathrm{in}}'(s)E_{\mathrm{out}}'(t)+O_{\mathrm{in}}'(s)O_{\mathrm{out}}'(t).\]
+
+\textbf{Proof.} Put \(F(s,t)=\int_{I_s}\int_{I_t^c}C(x,y)^2\,dy\,dx\), with complements
+taken in \((-1,1)\). On the left tail \(y<\ell(t)\) the squared kernel factors as
+\((1+y)^2(1-x)^2/4\). On the right tail \(y>r(t)\) it factors as \((1+x)^2(1-y)^2/4\). The
+inner integrals of \((1\pm x)^2\) are \(2(E_{\mathrm{in}}\pm O_{\mathrm{in}})\). The two
+outer tail integrals are \((1+\ell(t))^3/3\) on the left and \((1-r(t))^3/3\) on the right.
+Multiplication gives
+
+\[F(s,t)=E_{\mathrm{in}}(s)E_{\mathrm{out}}(t)-O_{\mathrm{in}}(s)O_{\mathrm{out}}(t).\]
+
+The sum in the proposition is \(-\partial_s\partial_tF\), since \(I_s\) expands with \(s\)
+and \(I_t^c\) contracts with \(t\).
+
+One can recover \(J\) by integrating the boundary-pair density against \(2st\,ds\,dt\) over
+\(c<s<t\). The layer-cake formula also identifies the dependence on the signs of the
+midpoints directly. Put \(I_s=\varnothing\) for \(s<c\) and set
+
+\[D(t)=\int_{I_t^c}\frac{(1-y^2)^2}{6}\,dy.\]
+
+Indeed, \(\int_{-1}^1 C(x,y)^2\,dx=(1-y^2)^2/6\). Thus the layer integrand over
+\(I_s^c\times I_t^c\) for \(s<t\) is \(D(t)-F(s,t)\), with \(F=0\) when \(s<c\).
+Consequently \(J=J_{\mathrm{sq}}+J_{\mathrm{sign}}\), where
+
+\[J_{\mathrm{sq}}=2\int_0^\infty tD(t)\,dt-2\iint_{c<s<t}E_{\mathrm{in}}(s)E_{\mathrm{out}}(t)\,ds\,dt,\]
+
+\[J_{\mathrm{sign}}=\frac{2}{3}\iint_{c<s<t}W(s)a(s)a(t)\bigl[3u(t)^2+a(t)^2\bigr]\,ds\,dt.\]
+
+At fixed \(W\), the first expression depends on the path only through \(a^2\), whereas the
+second couples the signs at different levels. The first inverse trace has the simpler
+expression
+
+\[T_1(v)=\int_0^\infty\left(\frac23-\frac W2+\frac{W^3}{24}+\frac{Wa^2}{2}\right)ds,\]
+
+where \(W=a=0\) below \(c\). This follows by integrating \((1-x^2)/2\) over the complement
+of each sublevel interval.
+
+\section{5. Three bumps with equal first three inverse
+traces}\label{three-bumps-with-equal-first-three-inverse-traces}
+
+Take nonzero, nonnegative smooth bumps \(A,B,D\) with disjoint, ordered supporting intervals
+in \((0,1)\). Keep \(B\) in the north, put \(rD\) in the south, and compare the two
+placements of \(A\):
+
+\[v_N=v_0+\varepsilon(A+B+rD^\#),\qquad v_S=v_0+\varepsilon(A^\#+B+rD^\#).\]
+
+For small \(\varepsilon>0\) the profiles share \(W,|a'|\), their even part \(e\), and
+\(T_1\). The fixed \(B\) prevents a global reflection. On the northern half the odd parts
+are \(\varepsilon(\pm A+B-rD)/2\). By Proposition 3.1,
+
+\[T_2(v_N)-T_2(v_S)=2\varepsilon^2\langle A,K(B-rD)\rangle.\]
+
+Thus the unique positive balancing amplitude is
+\(r=\langle A,KB\rangle/\langle A,KD\rangle\).
+
+For the third trace, put
+
+\[G_e(x,y)=\int_{-1}^1 C(x,z)e(z)C(z,y)\,dz,\]
+
+\[Q_e(x,y)=C(x,y)G_e(x,y)-C(x,-y)G_e(x,-y).\]
+
+In the triple integral for \(T_3(e+o)\), simultaneous reflection removes the terms with an
+odd number of odd factors. The three terms with two odd factors coincide, and folding them
+onto the northern half gives \(T_3(e+o)=T_3(e)+6\langle o,Q_eo\rangle\). Hence
+
+\[T_3(v_N)-T_3(v_S)=6\varepsilon^2\langle A,Q_e(B-rD)\rangle.\]
+
+\textbf{Lemma 5.1.} For \(0<x<y<1\), set \(\mathcal R_e(x,y)=Q_e(x,y)/K(x,y)\). Define
+
+\[I_1=(1-x)\int_0^x(1+z^2/x)e(z)\,dz,\qquad I_2=\int_x^y(1-z^2)e(z)\,dz,\]
+
+\[I_3=\frac{1+y}{1-y}\int_y^1(1-z)^2e(z)\,dz.\]
+
+Then \(2\mathcal R_e=I_1+I_2+I_3\), and
+
+\[\partial_y\mathcal R_e=\frac{1}{(1-y)^2}\int_y^1(1-z)^2e(z)\,dz>0,\]
+
+\[\partial_x\mathcal R_e=-\frac12\int_0^x(1+z^2/x^2)e(z)\,dz<0.\]
+
+\textbf{Proof.} For \(x,z>0\) the sum \(C(x,z)+C(x,-z)\) is \(1-\max(x,z)\), and their
+difference is \(\min(x,z)(1-\max(x,z))\). Fold the integral defining \(G_e\) using these two
+kernels and the evenness of \(e\). Splitting at \(z=x\) and \(z=y\) and dividing \(Q_e\) by
+\(K=x(1-y)^2\) gives the three displayed integrals. Differentiation cancels the endpoint
+terms.
+
+\textbf{Proposition 5.2.} Choose \(r\) to balance \(T_2\). The sign of
+\(\Delta T_3=T_3(v_N)-T_3(v_S)\) is fixed in the two exterior orderings. The table also
+gives the interior construction of Proposition 5.3.
+
+{% Unnumbered results table.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Support order
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Third-trace difference
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Comparison
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(A<B<D\) & \(\Delta T_3<0\) & Increase the larger variable. \\
+\(B<D<A\) & \(\Delta T_3>0\) & Increase the smaller variable. \\
+\(B<A<D\) & Both signs occur in the construction. & Move the middle bump. \\
+\end{longtable}
+}
+
+\textbf{Proof.} Compare the two \(K\)-weighted averages of \(\mathcal R_e\) for the pairs
+\((A,B)\) and \((A,D)\). For \(A<B<D\), the factorization \(K(x,y)=x(1-y)^2\) gives the same
+normalized \(A\)-weight in both averages. Holding the \(A\) variable fixed, moving the
+second variable from \(B\) to \(D\) strictly increases \(\mathcal R_e\). For \(B<D<A\), the
+common \(A\)-weight is proportional to \((1-y)^2 A(y)\), and moving the smaller argument
+from \(B\) to \(D\) strictly decreases \(\mathcal R_e\).
+
+\textbf{Proposition 5.3.} In the order \(B<A<D\) one can choose smooth bumps so that
+\(T_1,T_2,T_3\) all agree. They can be chosen with the gap from \(A\) to \(D\) strictly
+shorter than the gap from \(B\) to \(A\) in the round latitude coordinate.
+
+\textbf{Proof.} First freeze the even profile at \(v_0\) and consider point concentrations
+at centers \(b<a<d\). The difference of the two normalized averages is then
+
+\[H(a)=\mathcal R_{v_0}(b,a)-\mathcal R_{v_0}(a,d).\]
+
+For this limiting comparison \(H\) is strictly increasing, negative at \(b\) and positive at
+\(d\), by Lemma 5.1 and continuity on the diagonal. We locate a sign change with a strict
+margin in the gap inequality. Choose \(b=\delta\), \(d=3\delta\), and \(a_-=5\delta/2\). On
+\(b\le x\le y\le d\), the formulas in the lemma give
+\(\partial_x\mathcal R_{v_0}=O(\delta)\) and
+\(\partial_y\mathcal R_{v_0}=2\log 2-1+O(\delta)\) uniformly. Subtracting through
+\(\mathcal R_{v_0}(a_-,a_-)\) therefore gives
+
+\[H(a_-)=-\tfrac{\delta}{2}(2\log 2-1)+O(\delta^2)<0.\]
+
+Fix \(\delta\) small, and choose \(a_+\in(a_-,d)\) close enough to \(d\) that \(H(a_+)>0\).
+Throughout \([a_-,a_+]\), the \(x\)-gap from \(a\) to \(b\) is at least \(3\delta/2\),
+whereas the gap from \(a\) to \(d\) is at most \(\delta/2\). The round latitude density
+\((1-x^2)^{-1/2}\) and Mercator density \((1-x^2)^{-1}\) are both \(1+O(\delta^2)\) on this
+interval and the adjoining gaps, so these inequalities remain strict in both coordinates.
+
+Replace the point concentrations by nonnegative smooth bumps of unit mass with sufficiently
+narrow supports, translating the middle bump with \(a\). At \(\varepsilon=0\) the two
+normalized averages still have opposite difference signs at \(a_-,a_+\), by continuity of
+the kernels near the separated point pairs. The support gaps remain disjoint and satisfy the
+strict latitude comparison uniformly on \([a_-,a_+]\). For these fixed widths the balancing
+\(r(a)\) is positive, continuous and bounded. Now choose \(\varepsilon>0\) small enough that
+the endpoint signs persist and all profiles have strictly positive curvature. The
+intermediate value theorem applied to the actual normalized difference with its varying
+\(e=e(a,\varepsilon)\) gives a position with equal \(T_3\). The choice of \(r(a)\) keeps
+\(T_2\) equal throughout.
+
+\section{6. Ordinary multiplicities and finite trace
+coincidences}\label{ordinary-multiplicities-and-finite-trace-coincidences}
+
+\textbf{Proposition 6.1 (Engman [3, Proposition 3.1]).} The rotation-invariant spectrum
+is the set of ordinary Laplace eigenvalues with odd multiplicity.
+
+\textbf{Proof.} Each separated radial problem has simple eigenvalues. The modes \(m\) and
+\(-m\) for \(m\ne0\) contribute in pairs. The contribution at \(m=0\) is either zero or one,
+and determines the parity of the total multiplicity.
+
+In particular the ordinary spectrum determines every \(T_k\). It distinguishes the pair of
+Corollary 3.2 and the two orderings covered by Proposition 5.2.
+
+\textbf{Theorem 6.2.} For every \(n\ge2\), there are nonisometric smooth, positively curved
+single-well profiles with the same \((W,|a'|)\) and identical \(T_1,\ldots,T_n\). At most
+\(n+1\) nonnegative bumps suffice.
+
+\textbf{Proof.} Choose an anchor \(A\) and \(n\) further nonzero bumps \(B_i\) supported in
+disjoint closed subintervals of \((0,1)\). For \(u\in S^{n-1}\) write \(u_i^+=\max(u_i,0)\)
+and \(u_i^-=\max(-u_i,0)\). Set
+
+\[v_u=v_0+\varepsilon A+\varepsilon\sum_{i=1}^n(u_i^+B_i+u_i^-B_i^\#).\]
+
+Take \(\varepsilon\) uniformly small. The affected height ranges stay disjoint because
+\(v_0\) is strictly increasing on the northern support intervals. All profiles remain single
+wells with strictly positive curvature by uniform \(C^2\) control. In each affected range,
+the sublevel intervals for \(u\) and \(-u\) are identical or reflected. Their \((W,|a'|)\)
+agree, as do their local semiclassical coefficients. Their first inverse traces agree
+because \(T_1\) has an even weight. The fixed anchor excludes global reflection, and some
+\(u_i\) is nonzero, so the profiles are distinct and hence nonisometric by Section 1.
+
+The functions \(T_j(v_u)\) are continuous in \(u\), for example by the cyclic integral
+formula of Section 3. The continuous odd map \(u\mapsto(T_j(v_u)-T_j(v_{-u}))_{j=2}^n\)
+takes \(S^{n-1}\) into \(\mathbb R^{n-1}\). By the Borsuk--Ulam theorem it has a zero,
+giving the required pair.
+
+The construction permits both the number of bumps and the resulting pair to change with
+\(n\).
+
+\section{7. Finite determinacy for fixed bump
+shapes}\label{finite-determinacy-for-fixed-bump-shapes}
+
+\textbf{Theorem 7.1.} Fix \(N\) bump shapes and their support positions. There is an integer
+\(K_*\) such that, for all admissible nonnegative amplitudes and all choices of hemisphere,
+equality of \(T_1,\ldots,T_{K_*}\) is equivalent to equality of the complete \(m=0\) spectra
+of the two arrangements with those amplitudes.
+
+\textbf{Proof.} Fix two sign patterns \(\sigma,\tau\) and denote the common amplitude vector
+by \(b\). The cyclic integral for \(T_j\) is homogeneous of degree \(j\) in \(v\), and the
+two profiles are affine in \(b\). Hence \(p_j(b)=T_j(v_{\sigma,b})-T_j(v_{\tau,b})\) is a
+polynomial of degree at most \(j\). By the Hilbert basis theorem the ascending chain of
+ideals \((p_1,\ldots,p_k)\) in \(\mathbb R[b_1,\ldots,b_N]\) stabilizes. Beyond that index
+every \(p_j\) lies in the stabilized ideal, so their common zero sets coincide. Take the
+maximum over the finitely many pairs of patterns. Finally the power sums of a positive
+trace-class inverse determine its nonzero eigenvalues with multiplicities, by successively
+extracting the largest eigenvalue and subtracting its contribution.
+
+The proof supplies no explicit cutoff. Theorem 6.2 allows the shapes to change with \(n\).
+If nontrivial configurations in one fixed finite family could be matched through every
+finite cutoff, even using different amplitudes at different cutoffs, applying Theorem 7.1 at
+that family's \(K_*\) would already give a fully \(m=0\)-isospectral pair in it.
+
+There is a local analytic analogue for the nonzero-sector traces \(J_m\) of Section 9. For
+fixed shapes their differences between two sign patterns extend to entire functions of the
+complex amplitudes by the exponential integral formula in that section. Near any point of a
+compact amplitude set, Noetherianity of the ring of convergent power series gives a finite
+generating list of germs from these differences. Choose local representatives of the
+finitely many irreducible components of their common complex zero germ. Each remaining
+entire difference vanishes as a germ on every component, hence on each representative by
+analytic continuation. Thus the same finite list describes the common zero set in a
+neighborhood. A finite cover of the compact set gives a single finite list of sectors there.
+
+\section{8. Latitude gaps and the rotation-invariant
+spectrum}\label{latitude-gaps-and-the-rotation-invariant-spectrum}
+
+The spectral statistic used in this section is defined on the mean-zero sector. For
+\(\kappa>0\), let
+
+\[L_\kappa(v)=\sum_{j\ge1}\log(1+\kappa^2/\lambda_{0,j}(v))=\log\det(I+\kappa^2P_v^{-1}).\]
+
+Its Taylor coefficients at \(\kappa=0\) give the inverse traces \(T_j\). Write
+\(G_{\kappa,v}\) for the Dirichlet Green kernel of \(-d^2/dx^2+\kappa^2v\) on \((-1,1)\).
+
+\textbf{Lemma 8.1 (mixed variation).} Let \(e\) be even and let \(P,Q\) be smooth, compactly
+supported odd perturbations. Suppose \(v_{s,t}=e+sP+tQ\) is positive and has the prescribed
+pole behavior throughout \([-1,1]^2\). Write \(G=G_{\kappa,v_{s,t}}\). Then
+
+\[\partial_s\partial_t L_\kappa(v_{s,t})=-\kappa^4\iint P(x)Q(y)G(x,y)^2\,dx\,dy.\]
+
+\textbf{Proof.} With the integration operator \(S\) of Section 3, the resolvent identity
+gives \(G=S(I+\kappa^2S^*M_{v_{s,t}}S)^{-1}S^*\) as an operator. Differentiating the
+trace-class determinant gives \(\partial_tL_\kappa=\kappa^2\int Q(y)G(y,y)\,dy\).
+Differentiating the resolvent gives \(\partial_s G=-\kappa^2 G M_P G\), proving the formula.
+Reflection identifies opposite corners of the parameter square. Hence
+
+\[2\big[L_\kappa(e+P+Q)-L_\kappa(e+P-Q)\big]=\int_{-1}^1\int_{-1}^1\partial_s\partial_t L_\kappa(v_{s,t})\,ds\,dt.\]
+
+\textbf{Theorem 8.2 (unequal latitude gaps).} For the profiles \(v_N,v_S\) of Section 5,
+assume \(B<A<D\) and that all three bump amplitudes are positive. Use \(\xi=\arcsin x\) to
+measure the two gaps between the actual facing support edges, and denote their lengths by
+\(d_{BA}\) and \(d_{AD}\). If \(d_{BA}\ne d_{AD}\), then
+
+\[\lim_{\kappa\to\infty}-\frac{1}{2\kappa}\log\big|L_\kappa(v_N)-L_\kappa(v_S)\big|=\min(d_{BA},d_{AD}).\]
+
+Consequently the two rotation-invariant spectra differ. Their ordinary Laplace spectra also
+differ by Proposition 6.1.
+
+\textbf{Proof.} In Lemma 8.1 use the common even part \(e\), take \(P\) to be the odd part
+of \(\varepsilon(B+rD^\#)\) and \(Q\) the odd part of \(\varepsilon A\). Throughout the
+parameter square, \(v_{s,t}\ge v_0\) because the bump contributions are nonnegative convex
+combinations of the two hemisphere placements. On each open gap \(v_{s,t}=v_0\).
+
+We first prove a uniform estimate for one pair of adjacent bumps \(F,H\) in the same
+hemisphere. Let \(d\) be the round latitude gap between their facing support edges. With
+both bump functions taken positive in sign, set
+
+\[I_\kappa(s,t)=\iint F(x)H(y)G_{\kappa,v_{s,t}}(x,y)^2\,dx\,dy.\]
+
+The change of variable \(\xi=\arcsin x\) with \(h(x)=v_0(x)^{1/4}\) gives
+\(G(x,y)=\widehat G(\xi,\eta)/(h(x)h(y))\), where \(\eta=\arcsin y\) and \(\widehat G\) is
+the Green kernel on \((-\pi/2,\pi/2)\) of
+
+\[-\partial_\xi^2+\frac{3}{4\cos^2\xi}-\frac14+\kappa^2\frac{v_{s,t}}{v_0}.\]
+
+The potential is at least \(\kappa^2\). Green kernel comparison with the free kernel on the
+line gives \(\widehat G(\xi,\eta)\le e^{-\kappa|\xi-\eta|}/(2\kappa)\). Consequently
+\(I_\kappa(s,t)\le C\kappa^{-2}e^{-2\kappa d}\) uniformly on the parameter square. The same
+upper bound with the appropriate separation applies to any two supports.
+
+For the reverse bound, fix \(\delta>0\). Enlarge the gap slightly into both supports to form
+a compact interval of latitudes \(J\). The bump functions vanish at the facing edges. Thus
+\(J\) can be chosen with length at most \(d+\delta\) and \(v_{s,t}/v_0\le1+\delta\) on \(J\)
+for all \((s,t)\). The remaining potential on \(J\) has a finite upper bound \(C_J\). Choose
+closed subintervals in the interior of \(J\) on which \(F\) and \(H\), respectively, have
+positive lower bounds. Such choices are possible arbitrarily near the facing edges by the
+definition of support. Domain restriction and potential comparison bound \(\widehat G\)
+below on this subrectangle by the Dirichlet kernel on \(J\) for \(-\partial_\xi^2+\mu^2\),
+where \(\mu^2=(1+\delta)\kappa^2+C_J\). For \(J=[l,r]\) and \(\xi<\eta\) this kernel is
+
+\[\frac{\sinh(\mu(\xi-l))\sinh(\mu(r-\eta))}{\mu\sinh(\mu(r-l))}.\]
+
+Since both chosen subintervals stay inside \(J\), this expression is at least
+\(c_\delta\mu^{-1}e^{-\mu(d+\delta)}\) for large \(\kappa\). On this compact set the
+Jacobians and \(1/h\) are bounded below by positive constants. Integrating the square gives
+\(I_\kappa(s,t)\ge c'_\delta\mu^{-2}e^{-2\mu(d+\delta)}\). Taking logarithms and then
+letting \(\delta\downarrow0\) gives rate \(d\), uniformly in \((s,t)\). These bounds also
+hold after integration over the parameter square, with adjusted constants.
+
+In the northern hemisphere the factors in the mixed variation are \(P=\varepsilon(B-rD)/2\)
+and \(Q=\varepsilon A/2\). The \(B,A\) and \(D,A\) products have opposite signs. In the
+southern hemisphere both signs reverse, preserving each product's sign. Each cross-equator
+separation is strictly greater than the same pair's gap in a single hemisphere because all
+the original supports are compactly contained in \((0,1)\). The two same-hemisphere
+contributions from the smaller gap therefore have the same sign and a strictly smaller
+exponent than every potentially cancelling contribution. Lemma 8.1 now gives the stated
+limit.
+
+\textbf{Corollary 8.3.} There are three-bump pairs with the same \((W,|a'|)\) and the same
+first three rotation-invariant inverse traces, but different rotation-invariant spectra. In
+the near-equator construction of Section 5, choose two bracketing positions for \(A\)
+strictly on the \(D\) side of the round-latitude midpoint. With narrow supports,
+\(d_{AD}<d_{BA}\) throughout that bracket, including at a zero of the third-trace
+difference. Theorem 8.2 applies there. By Theorem 7.1 some \(T_k\) with \(4\le k\le K_*\)
+separates that pair.
+
+\section{9. Nonzero sectors and the Mercator
+kernel}\label{nonzero-sectors-and-the-mercator-kernel}
+
+The two-bump pair of Section 2 can be distinguished by the spectrum in each individual
+sector \(m\ne0\). Throughout this section write \(M=|m|\).
+
+\textbf{Lemma 9.1 (Green kernel).} Relative to area measure \(dy\), the kernel of
+\(L_m^{-1}\) is
+
+\[K_{v,m}(x,y)=\frac{1}{2M}\exp\left(-M\left|\int_x^y v(z)\,dz\right|\right).\]
+
+\textbf{Proof.} In the Mercator coordinate \(\tau\), defined by \(d\tau=v\,dx\), the
+operator is \(v(-\partial_\tau^2+M^2)\), and the two poles are \(\tau=\pm\infty\). The
+decaying full-line Green function gives the stated formula after conversion back to \(dy\).
+Its weighted flux \(v^{-1}\partial_x K_{v,m}\) has jump \(-1\) at \(x=y\), and its behavior
+at each pole is the regular solution in that sector.
+
+The first inverse trace in each nonzero sector is universal [3, Proposition 3.1]. The
+second inverse trace, denoted by \(J_m\), records integrals of \(v\) over intervals:
+
+\[\mathrm{Tr}(L_m^{-1})=\int_{-1}^{1}K_{v,m}(x,x)\,dx=1/M,\]
+
+\[J_m(v)=\mathrm{Tr}(L_m^{-2})=\frac{1}{2M^2}\iint_{-1<x<y<1}\exp\left(-2M\int_x^y v(z)\,dz\right)\,dx\,dy.\]
+
+On the round sphere the first formula is the telescoping sum of \(1/(\ell(\ell+1))\) over
+\(\ell\ge M\).
+
+\textbf{Theorem 9.2 (two-bump identity).} Let \(\alpha,\beta\) be two bumps as in Section 1,
+with \(b=\sup\,\operatorname{supp}(\alpha)<c=\inf\,\operatorname{supp}(\beta)\). Let
+\(v_1=v_0+\varepsilon(\alpha+\beta)\) and \(v_2=v_0+\varepsilon(\alpha+\beta^\#)\), and
+write \(v_{1,2}=e+\varepsilon A\pm\varepsilon B\), where \(e\) is their common even part,
+\(A=(\alpha-\alpha^\#)/2\) and \(B=(\beta-\beta^\#)/2\). On \(-b<x<b\) and \(c<y<1\) put
+
+\[U(x)=\frac{\varepsilon}{2}\int_{|x|}^{b}\alpha(z)\,dz,\qquad V(y)=\frac{\varepsilon}{2}\int_c^y\beta(z)\,dz.\]
+
+Then every nonzero sector distinguishes the two profiles through the exact identity
+
+\[J_m(v_1)-J_m(v_2)=\frac{2}{M^2}\int_{-b}^{b}\int_c^1 e^{-2M\int_x^y e(z)\,dz}\sinh(2MU(x))\sinh(2MV(y))\,dy\,dx>0.\]
+
+\textbf{Proof.} Pair each interval \([x,y]\) with \([-y,-x]\). Their even integrals coincide
+and their odd integrals have opposite signs. Using
+\(\cosh(u+w)-\cosh(u-w)=2\sinh u\,\sinh w\) leaves a product of two hyperbolic sines. The
+two odd integrals are simultaneously nonzero only when the two absolute endpoint values span
+both bump ranges. Each surviving reflection pair has a representative in
+\((-b,b)\times(c,1)\), on which the two odd integrals, including \(\varepsilon\), are
+\(U(x),V(y)\). Both are nonnegative and both are positive on a set of positive area.
+
+\textbf{Corollary 9.3 (rate).} Set \(\Delta=\int_b^c v_0(z)\,dz\), the round Mercator gap
+between the true facing support edges, and let \(\delta J_m=J_m(v_1)-J_m(v_2)\). For every
+fixed admissible \(\varepsilon>0\),
+
+\[0<\delta J_m\le C M^{-2}e^{-2M\Delta},\qquad \lim_{M\to\infty}-\frac{\log\delta J_m}{2M}=\Delta.\]
+
+\textbf{Proof.} The right-hand side of the identity in Theorem 9.2 can be rewritten as
+
+\[\frac{1}{2M^2}\int_{-b}^b\int_c^1 e^{-2M\int_x^y v_1^\#(z)\,dz}(1-e^{-4MU(x)})(1-e^{-4MV(y)})\,dy\,dx.\]
+
+The density \(v_1^\#\) is positive and equals \(v_0\) on \([b,c]\), which gives the upper
+bound. Given \(\eta>0\), choose a small closed rectangle with \(x\) just below \(b\) and
+\(y\) just above \(c\). The rectangle can be chosen so that \(\int_x^y v_1^\#<\Delta+\eta\)
+while \(U\) and \(V\) have strictly positive lower bounds. Its contribution is at least
+\(c_\eta M^{-2}e^{-2M(\Delta+\eta)}\) for all sufficiently large \(M\). Sending \(\eta\) to
+zero gives the limit. This is a logarithmic rate for one exact statistic. Equality of all
+coefficients in the smoothed trace expansion was proved separately in Proposition 2.1.
+
+\textbf{Autocorrelation.} Let \(\psi(\tau)=1/v(x(\tau))\), so that \(dx=\psi(\tau)\,d\tau\),
+and let \(R_\psi(h)=\int_{\mathbb R}\psi(t)\psi(t+h)\,dt\). This continuous even function is
+integrable. The trace formula becomes
+
+\[4M^2J_m(v)=\int_{\mathbb R}e^{-2M|h|}R_\psi(h)\,dh.\]
+
+The high-weight values determine \(R_\psi\). Indeed, push the finite measure
+\(2R_\psi(h)\,dh\) on \(h\ge0\) forward by \(q=e^{-2h}\) to \([0,1]\). The right-hand side
+gives all sufficiently high integer moments of this measure. Multiplication by \(q^{M_0}\),
+with \(M_0\) above the cutoff, yields a measure with every moment known. Polynomials are
+dense in \(C[0,1]\) and the original pushforward has no atom at \(q=0\), so it is uniquely
+determined. Recovery of \(\psi\) from \(R_\psi\) is a separate phase retrieval question.
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Theorem 9.4 (sign expansion).} For the bump family of Section 1 set
+\(U_i=2M\varepsilon\int_x^y O_i(z)\,dz\) and \(\sigma_S=\prod_{i\in S}\sigma_i\). Then
+
+\[J_m(v_\sigma)=\frac{1}{2M^2}\iint_{x<y}e^{-2M\int_x^y e}\cosh\!\left(\sum_i\sigma_iU_i\right)\,dx\,dy=\sum_{|S|\ {\mathrm{even}}}\sigma_S c_S(m),\]
+
+\[c_S(m)=\frac{1}{2M^2}\iint_{x<y}e^{-2M\int_x^y e}\prod_{i\in S}\sinh U_i\prod_{i\notin S}\cosh U_i\,dx\,dy.\]
+\end{minipage}\par
+
+Reflection of \([x,y]\) replaces the exponential of the signed sum by its hyperbolic cosine
+after averaging. Expanding \(\cosh(\sum_i\sigma_i U_i)\) gives the formula. The numbers
+\(U_i\) all have the same weak sign on each interval because the primitives of the \(O_i\)
+are even and nondecreasing in \(|x|\). In particular every coefficient with two indices is
+positive.
+
+For a nonempty even set \(S\), let \(\ell_S\) be the round Mercator distance between the
+facing edges of its innermost and outermost supports. Then
+\(c_S(m)=O(M^{-2}e^{-2M\ell_S})\). In fact, an interval contributing to \(c_S\) crosses a
+Mercator distance at least \(\ell_S\), and \(e-\varepsilon\sum_i|O_i|=v_0\) gives the bound
+after estimating the hyperbolic functions by exponentials.
+
+For consecutive bumps \(i,i+1\) the logarithmic decay rate of \(c_{\{i,i+1\}}(m)\) is
+exactly their gap \(g_i\). For the lower bound, take \(x,y\) just inside the facing support
+edges on the northern half. Over a sufficiently small such rectangle no other support meets
+\([x,y]\), both active odd integrals have positive lower bounds there, and
+\(\int_x^y v_0<g_i+\eta\). Removing the growing exponentials from the two sines leaves the
+density \(v_0\) on these intervals and two factors tending uniformly to one. Thus the
+integral over that rectangle is bounded below by a positive constant times
+\(M^{-2}e^{-2M(g_i+\eta)}\). This proves the rate for every \(\eta>0\).
+
+The corresponding autocorrelations satisfy
+\(R_{\psi_\sigma}=\sum_{|S|\ {\mathrm{even}}}\sigma_S\rho_S\), where
+\(\rho_S=2^{-N}\sum_\sigma\sigma_S R_{\psi_\sigma}\). Consequently
+
+\[4m^2c_S(m)=\int_{\mathbb R}e^{-2M|h|}\rho_S(h)\,dh.\]
+
+For nonempty even \(S\), \(\rho_S\) vanishes on \(|h|<\ell_S\). To see this, test the lag
+measures against an even continuous function supported in this interval. For each \(x<y\),
+the sign average cancels whenever \(\int_x^y O_i=0\) for some \(i\in S\). Otherwise the
+endpoints span the extreme supports of \(S\) and
+\(\int_x^y v_\sigma\ge\int_x^y v_0\ge\ell_S\) for every \(\sigma\). In both cases the
+resulting contribution is zero.
+
+\textbf{Theorem 9.5 (distinct gaps).} For fixed bump shapes and amplitudes, pairwise
+distinct consecutive Mercator gaps suffice for the high-weight sectors to determine the
+hemisphere arrangement up to global reflection.
+
+\textbf{Proof.} Compare \(\sigma\) and \(\gamma\) with \(\gamma\ne\pm\sigma\). Call a gap a
+boundary gap if the adjacent entries of \(\sigma_i\gamma_i\) have opposite signs. If an even
+set \(S\) has \(\sigma_S\ne\gamma_S\), it contains an odd number of flipped and of unflipped
+signs. Its extreme indices therefore span a boundary gap. Let \(g_i\) be the smallest
+boundary gap. Under the stated distinctness assumption, only \(S=\{i,i+1\}\) among the
+sign-changing sets can have \(\ell_S=g_i\). Every other such set spans a strictly greater
+distance. The bounds and the matching logarithmic rate in Theorem 9.4 show that the ratio of
+\(J_m(v_\sigma)-J_m(v_\gamma)\) to \(2\sigma_i\sigma_{i+1}c_{\{i,i+1\}}(m)\) tends to one.
+Thus the two arrangements differ for every sufficiently large \(M\).
+
+The same proof applies whenever the smallest boundary gap for the chosen comparison is
+unique. In the sandwich \(B<A<D\) of Section 5, with the factor \(r\) included in the shape
+of the outer bump, the difference is \(2(c_{\{B,A\}}(m)-c_{\{A,D\}}(m))\). Equal gap lengths
+can leave competing terms of the same exponential order.
+
+\section{10. Two gap lengths determine the three-bump
+arrangement}\label{two-gap-lengths-determine-the-three-bump-arrangement}
+
+For two candidate sign patterns, a boundary gap separates a bump whose sign changes from a
+consecutive bump whose sign stays fixed. Theorem 9.5 uses Mercator lengths to distinguish
+patterns with a unique shortest boundary gap. Theorem 8.2 supplies a second way to compare
+two gaps.
+
+\textbf{Lemma 10.1 (Mercator distortion).} Let \(v>0\) be strictly increasing on \((0,1)\).
+For a nonempty interval \(I\), write \(\mathrm{Lat}(I)=\int_I\sqrt v\,dx\) and
+\(\mathrm{Merc}(I)=\int_I v\,dx\). If \(I_1\) lies strictly to the left of \(I_2\) with
+separated closures, then
+
+\[\frac{\mathrm{Merc}(I_1)}{\mathrm{Lat}(I_1)}<\frac{\mathrm{Merc}(I_2)}{\mathrm{Lat}(I_2)}.\]
+
+\textbf{Proof.} Each ratio is the average of \(\sqrt v\) on its interval with respect to the
+positive weight \(\sqrt v\,dx\). Every value on the left interval is smaller than every
+value on the right. Equal latitude lengths thus imply
+\(\mathrm{Merc}(I_1)<\mathrm{Merc}(I_2)\), and equal Mercator lengths imply
+\(\mathrm{Lat}(I_1)>\mathrm{Lat}(I_2)\).
+
+\textbf{Theorem 10.2 (the middle bump).} Let \(B<A<D\) be fixed nonzero, nonnegative bumps
+with separated supports on a round background. Keep \(B\) in the north and \(rD\) in the
+south for \(r>0\), and switch \(A\) from north to south, with positive amplitudes giving
+admissible metrics. The resulting \(v_N,v_S\) have different equivariant spectra.
+
+\textbf{Proof.} Let \(I_1\) be the open gap between \(B\) and \(A\), and \(I_2\) the gap
+between \(A\) and \(D\). Use the actual support edges. Each interpolating profile equals
+\(v_0\) on both gaps. Unequal latitude lengths separate the rotation-invariant spectra by
+Theorem 8.2. For equal latitude lengths, Lemma 10.1 gives
+\(\mathrm{Merc}(I_1)<\mathrm{Merc}(I_2)\). Theorem 9.4 gives
+
+\[J_m(v_N)-J_m(v_S)=2\big(c_{BA}(m)-c_{AD}(m)\big).\]
+
+The two coefficients are positive, with logarithmic decay rates given by their respective
+Mercator gaps. Thus their difference is strictly positive for all sufficiently large
+\(|m|\).
+
+\textbf{Corollary 10.3 (all placements of three bumps).} For three fixed nonzero,
+nonnegative bumps of fixed positive amplitudes on a round background, ordered by their
+separated northern support intervals, the equivariant spectrum determines their hemisphere
+placements up to simultaneous reflection.
+
+\textbf{Proof.} Up to reflecting one configuration globally, any two inequivalent placements
+differ at just one bump. Call that bump \(A\) and the others \(B,D\). If the two unchanged
+bumps lie in the same hemisphere, the second sector trace changes by
+\(\pm2(c_{BA}+c_{AD})\), which is nonzero for every \(m\ne0\). If they lie in opposite
+hemispheres and \(A\) is the middle bump, Theorem 10.2 applies. If \(A\) is an end bump, its
+coupling to its adjacent bump has logarithmic rate equal to their Mercator gap. Its coupling
+to the farther bump decays at least at the rate associated with the full span between their
+facing edges, which is strictly longer. The adjacent coupling therefore dominates for large
+\(|m|\) by Theorem 9.4.
+
+\textbf{Proposition 10.4 (comparison of gap lengths).} For positive continuous functions
+\(f,g\) and separated ordered gaps \(I_1<I_2\), strict monotonicity of \(f/g\) implies that
+the two gaps cannot have equal lengths for both densities \(f\) and \(g\). Indeed,
+\((\int_I f)/(\int_I g)\) is a weighted average of \(f/g\). For strictly increasing \(v\),
+it follows that \(\int_{I_1}v^p\,dx=\int_{I_2}v^p\,dx\) for at most one real exponent \(p\).
+For \(c\ge0\) the same conclusion holds for at most one member of the family
+\(f_c(v)=\sqrt{v^2+c^2v}\), since \(f_c/f_{c'}=\sqrt{(v+c^2)/(v+c'^2)}\) is strictly
+monotone in \(v\) whenever \(c\ne c'\).
+
+For a fixed finite bump family, the two gap estimates also distinguish configurations with
+at most two boundary gaps, provided at least one sign is fixed and at least one changes. For
+the latitude estimate, use the odd part of the fixed bumps as \(P\) and that of the flipped
+bumps as \(Q\) in Lemma 8.1. Any nonadjacent cross-pair spans a boundary gap and has
+strictly greater separation than that gap. Consequently, a unique shortest latitude boundary
+gap gives the same conclusion as in Theorem 8.2. The Mercator assertion follows from the
+proof of Theorem 9.5. If two boundary gaps tie in one coordinate, Lemma 10.1 separates them
+in the other.
+
+With three ordered boundary gaps \(I_0<I_1<I_2\), Lemma 10.1 permits the two ties
+
+\[\mathrm{Lat}(I_1)=\mathrm{Lat}(I_2)<\mathrm{Lat}(I_0),\]
+
+\[\mathrm{Merc}(I_0)=\mathrm{Merc}(I_1)<\mathrm{Merc}(I_2).\]
+
+Four bumps with the first and third flipped already have three boundary gaps. Proposition
+10.4 gives a length comparison for the further spectral test described in Section 11.
+
+\section{11. Results and questions}\label{results-and-questions}
+
+The table records which spectral data distinguish the profiles considered here. In the
+three-bump results the shapes, absolute amplitudes and locations on the northern half are
+fixed. A simultaneous reflection always preserves the spectrum.
+
+{% Unnumbered results table.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3900}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6100}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Conclusion
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Local semiclassical invariants (2.1) & All coefficients agree for the reflected two-bump
+pair. \\
+Inverse traces and height coordinates (3.1--4.1) & The positive quadratic form separates two
+bumps. The cubic outer weights give the coupling between distinct levels. \\
+Third-trace comparison (5.1--5.3) & The two exterior orderings have strict signs. In the
+sandwich construction at least one smooth balancing position exists. \\
+Finite data (6.1--7.1) & Odd multiplicity recovers the invariant sector. Any prescribed
+finite prefix can tie in a sufficiently large family. Each fixed family has a finite
+cutoff. \\
+Invariant-sector separation (8.1--8.3) & The mixed derivative and the uniform upper and
+lower Green kernel bounds give the exact logarithmic gap rate. A balanced triple is
+distinguished by a later trace. \\
+Nonzero sectors (9.1--9.3) & A single nonzero weight distinguishes the two-bump pair. The
+facing support edges give the logarithmic decay rate. \\
+Several bumps (9.4--9.5) & The sign coefficients obey a gap bound. A unique shortest
+boundary gap separates the two arrangements at all sufficiently large weights. \\
+Three bumps (10.1--10.3) & The equivariant spectrum determines the arrangement up to global
+reflection, including equal-gap cases. \\
+\end{longtable}
+}
+
+\textbf{Four or more bumps.} The first case outside the two-gap argument has four bumps with
+the first and third flipped. One possible approach uses the rays \(\kappa=c|m|\), \(c>0\),
+with length density \(\sqrt{v^2+c^2v}\). Proposition 10.4 implies that the lengths of
+finitely many disjoint gaps are pairwise distinct for all but finitely many choices of
+\(c\). To turn this observation into spectral separation one would need an observable with a
+nonvanishing leading contribution from the shortest boundary gap and a uniform decay
+estimate along that ray.
+
+\textbf{Exact invariant-sector isospectrality.} Can two profiles in a common \((W,|a'|)\)
+class have the same full \(m=0\) spectrum without being related by reflection? A uniform
+cutoff \(K_*\le n\) in a family to which Theorems 6.2 and 7.1 both apply would give such a
+pair. Existence of one exactly isospectral pair would supply no such bound for the whole
+family.
+
+\textbf{Accumulating swaps and signed perturbations.} If infinitely many gaps accumulate,
+there may be no shortest gap. A limiting argument for the finite-trace constructions would
+also have to keep the two limiting profiles distinct up to reflection. Allowing bumps to
+change sign raises a separate question, since the weights in the lower bounds of Sections 8
+and 9 depend on positivity.
+
+\textbf{Ordinary spectrum.} Does the unlabeled Laplace spectrum distinguish the sandwich
+arrangements when their two latitude gaps tie? The proof in Section 10 uses nonzero weight
+labels in that case.
+
+\textbf{Smooth single wells.} Does the asymptotic equivariant spectrum of [1, Definition
+2.1] determine every smooth single well? Section 2 isolates the branch-labeling issue in
+the proof. Section 9 resolves the exact large-weight comparison for the explicit two-bump
+pair. For a general profile one can also ask which swaps preserve the autocorrelation of
+\(1/v\) in the Mercator coordinate, the information carried by all the \(J_m\).
+
+\textbf{Relation to cyclic covers.} For a rotation acting through an irrational angle on a
+surface of revolution, the equivariant spectrum is the cross-section data obtained from the
+full cyclic tower by recovering the twisted heat traces and Fourier decomposing the rotation
+action. The results above describe what these data distinguish within the fixed bump
+families. Recovering an arbitrary smooth profile requires a more general uniqueness
+argument.
+
+\section{References}\label{references}
+
+[1] E. B. Dryden, D. Macedo and R. Sena-Dias. Recovering \(S^1\)-invariant metrics on
+\(S^2\) from the equivariant spectrum. \emph{International Mathematics Research Notices}
+2016, no. 16, 4882--4902. \href{https://arxiv.org/abs/1501.02830v2}{arXiv:1501.02830v2}.
+
+[2] Y. Colin de Verdière. A semi-classical inverse problem II: reconstruction of the
+potential. 2008. \href{https://arxiv.org/abs/0802.1643}{arXiv:0802.1643}.
+
+[3] M. Engman. The spectrum and isometric embeddings of surfaces of revolution.
+\emph{Canadian Mathematical Bulletin} 49 (2006), no. 2, 226--236.
+\href{https://doi.org/10.4153/CMB-2006-023-7}{doi:10.4153/CMB-2006-023-7}.
+
+[4] J. Brüning and E. Heintze. Spektrale Starrheit gewisser Drehflächen.
+\emph{Mathematische Annalen} 269 (1984), 95--101.
+\href{https://doi.org/10.1007/BF01455998}{doi:10.1007/BF01455998}.
+
+\end{document}
