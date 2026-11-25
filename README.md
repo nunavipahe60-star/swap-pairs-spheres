@@ -1,5 +1,7 @@
 # Swap Pairs on Spheres of Revolution: What the Equivariant Spectrum Sees
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24531890.svg)](https://doi.org/10.5281/zenodo.24531890)
+
 **Author:** Erina (`nunavipahe60-star`), with collaborative research assistance from Claude, Gemini, and GPT/Codex.
 
 ## Overview
